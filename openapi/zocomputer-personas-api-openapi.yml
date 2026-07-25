@@ -1,0 +1,77 @@
+openapi: 3.1.0
+info:
+  title: Zo AI Personas API
+  version: 1.0.0
+servers:
+- url: https://api.zo.computer
+  description: Zo API
+security:
+- bearerAuth: []
+tags:
+- name: Personas
+paths:
+  /personas/available:
+    get:
+      tags:
+      - Personas
+      summary: List available personas
+      description: List all configured personas. When authenticated with an API key, returns personas for the key owner.
+      operationId: getAvailablePersonas
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ZoPersonasResponse'
+components:
+  schemas:
+    ZoPersonasResponse:
+      properties:
+        personas:
+          items:
+            $ref: '#/components/schemas/ZoPersonaInfo'
+          type: array
+          title: Personas
+          description: List of configured personas
+      type: object
+      required:
+      - personas
+      title: ZoPersonasResponse
+    ZoPersonaInfo:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: Unique persona identifier
+        name:
+          type: string
+          title: Name
+          description: Display name
+        prompt:
+          type: string
+          title: Prompt
+          description: System prompt defining the persona's behavior
+        model:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Model
+          description: AI model ID, or null for system default
+        image:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Image
+          description: Avatar image URL
+      type: object
+      required:
+      - id
+      - name
+      - prompt
+      title: ZoPersonaInfo
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Zo API key (zo_sk_...)
