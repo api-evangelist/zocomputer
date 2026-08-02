@@ -1,0 +1,16 @@
+{
+  "provider": "zocomputer",
+  "sources": [
+    "zocomputer-ai-api-openapi.yml",
+    "zocomputer-personas-api-openapi.yml"
+  ],
+  "outputs": [
+    "zocomputer-ai-api-openapi.yml",
+    "zocomputer-personas-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

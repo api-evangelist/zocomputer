@@ -1,0 +1,5 @@
+Contact: mailto:security@zocomputer.com
+Expires: 2027-04-08T04:00:00.000Z
+Preferred-Languages: en
+Canonical: https://www.zo.computer/.well-known/security.txt
+Policy: https://www.zo.computer/docs/information/security#vulnerability-disclosures

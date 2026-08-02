@@ -1,0 +1,182 @@
+# Zo Computer Documentation
+
+> Zo is an intelligent cloud computer: store your files, connect your tools, and research or build practically anything with AI. These docs cover using Zo, its built-in tools, hosting, and the API.
+
+## Instructions for AI agents
+- Every docs page is available as Markdown: append `.md` to its URL, or request it with `Accept: text/markdown`.
+- Start with the Introduction for the product model; the Tools pages document every built-in tool and its parameters.
+- The public HTTP API is small — see the API reference pages; the OpenAPI spec is at https://www.zo.computer/docs-assets/openapi.json.
+
+## Getting started
+- [Introduction](https://www.zo.computer/docs.md): Welcome to Zo, your home on the internet.
+- [Desktop app](https://www.zo.computer/docs/desktop.md): Download Zo – a cloud computer, on your desktop.
+- [Subscription](https://www.zo.computer/docs/billing.md): Plans, AI credits, and how billing works
+
+## Zo basics
+- [Automations](https://www.zo.computer/docs/automations.md): Let Zo do the work while you're not at the keyboard
+- [Personas](https://www.zo.computer/docs/personas.md): Toggle different styles for your AI
+
+## Connect Zo
+- [Messaging channels](https://www.zo.computer/docs/messaging-channels.md): Use Zo from Discord, Slack, Telegram, SMS, and email
+- [Browser use](https://www.zo.computer/docs/browser.md): The only way for Zo to act on sites that need you signed in
+
+## Extend Zo
+- [Tools](https://www.zo.computer/docs/tools.md): Learn about Zo's tools
+- [Skills](https://www.zo.computer/docs/skills.md): Create repeatable AI workflows
+- [Bring your own LLM API](https://www.zo.computer/docs/byok.md): Use your own LLM API provider keys
+- [Claude Code](https://www.zo.computer/docs/claude-code.md): Use your Claude Code subscription with Zo
+- [Codex](https://www.zo.computer/docs/codex.md): Use your OpenAI Codex subscription with Zo
+- [API](https://www.zo.computer/docs/api.md): Access Zo programmatically
+- [MCP server](https://www.zo.computer/docs/mcp-server.md): Power up any MCP-compatible AI with Zo's tools and context
+
+## Hosting
+- [Hosting on Zo](https://www.zo.computer/docs/hosting.md): Pick between Space, Sites, Services, and zo.pub
+- [Space](https://www.zo.computer/docs/spaces.md): Your personal domain at yourhandle.zo.space
+- [Sites](https://www.zo.computer/docs/sites.md): Create websites hosted on your Zo server
+- [Services](https://www.zo.computer/docs/services.md): Run any long-running program on your Zo
+- [zo.pub](https://www.zo.computer/docs/zo-pub.md): Publish a folder to your public namespace and share a link
+- [Custom domains](https://www.zo.computer/docs/custom-domains.md): Use your own domain for public sites and services
+
+## Advanced features
+- [Sync files](https://www.zo.computer/docs/sync-files.md): How to sync files from another computer to your Zo
+- [Connect GitHub](https://www.zo.computer/docs/github.md): How to connect your GitHub account to Zo
+- [Connect to your server](https://www.zo.computer/docs/ssh-zo.md): How to use your Zo as a remote development environment
+- [Payments](https://www.zo.computer/docs/payments.md): Connect Stripe to accept payments and sell products, services, or subscriptions
+- [Control a computer via SSH](https://www.zo.computer/docs/ssh-computer.md): How to operate another computer using Zo
+- [Devices](https://www.zo.computer/docs/devices.md): Let Zo use your desktop to browse the web, run commands, send messages, and access files
+
+## Tools
+- [Tools overview](https://www.zo.computer/docs/tools-overview.md): Learn about Zo's tools
+
+## Files
+- [Create file](https://www.zo.computer/docs/tools/write-file.md): Create a new file or rewrite an existing one with the provided content.
+- [Edit file](https://www.zo.computer/docs/tools/edit-file.md): Edit a text file using a sequence of precise edit operations.
+- [Edit file fast](https://www.zo.computer/docs/tools/edit-file-llm.md): Merge a large or fuzzy rewrite into a text file using a fast apply LLM.
+- [Read file](https://www.zo.computer/docs/tools/read-file.md): Read a file from the computer.
+- [List files](https://www.zo.computer/docs/tools/list-directory.md): Directory listing tool that shows files and subdirectories in a tree structure, helping you explore and understand the project organization.
+- [Search files](https://www.zo.computer/docs/tools/grep-search.md): Search files by content or filename using ripgrep.
+- [Copy file](https://www.zo.computer/docs/tools/copy-file.md): Copy a file or directory on the computer.
+- [Find file conversations](https://www.zo.computer/docs/tools/find-file-conversations.md): Find prior conversations linked to one exact workspace file path.
+- [Read file conversation](https://www.zo.computer/docs/tools/read-file-conversation-context.md): Read one indexed turn from a prior conversation linked to a workspace file.
+- [Transcribe audio](https://www.zo.computer/docs/tools/transcribe-audio.md): Transcribe an audio file and save the transcript next to the original file.
+- [Transcribe video](https://www.zo.computer/docs/tools/transcribe-video.md): Transcribe audio from a video file and save the transcript next to the original file.
+- [Generate image](https://www.zo.computer/docs/tools/generate-image.md): Generate an image following the provided prompt using an AI image generation model.
+- [Edit image](https://www.zo.computer/docs/tools/edit-image.md): Remix an existing image (or images) using an AI image model.
+- [Generate video from image](https://www.zo.computer/docs/tools/generate-video.md): Generate a short, 5 second video from an input image using an AI video generation model.
+- [Generate diagram](https://www.zo.computer/docs/tools/generate-d2-diagram.md): Generate a block diagram, using D2.
+
+## Web
+- [Read webpage](https://www.zo.computer/docs/tools/read-webpage.md): Read the content of a webpage.
+- [Open webpage](https://www.zo.computer/docs/tools/open-webpage.md): Open a webpage in Zo's browser.
+- [View webpage](https://www.zo.computer/docs/tools/view-webpage.md): View the current page in the browser and get its content plus a screenshot.
+- [Use webpage](https://www.zo.computer/docs/tools/use-webpage.md): Interact with the current page using an AI agent.
+- [Save webpage](https://www.zo.computer/docs/tools/save-webpage.md): Save webpage content to the user's Articles directory.
+- [Search the web](https://www.zo.computer/docs/tools/web-search.md): Search the web using a search engine.
+- [Research the web](https://www.zo.computer/docs/tools/web-research.md): Perform an in-depth web search using a more powerful search engine.
+- [Find similar links](https://www.zo.computer/docs/tools/find-similar-links.md): Find web pages similar to a given URL.
+- [Search images](https://www.zo.computer/docs/tools/image-search.md): Search for images on the web using a search engine.
+- [Search X](https://www.zo.computer/docs/tools/x-search.md): Search X (Twitter) for posts and users matching a query.
+- [Search Google Maps](https://www.zo.computer/docs/tools/maps-search.md): Search Google Maps for locations.
+
+## Computer
+- [Run command](https://www.zo.computer/docs/tools/bash.md): Run a single shell command on the computer.
+- [Create site](https://www.zo.computer/docs/tools/create-website.md): Create a site (also known as an app, or a website).
+- [Publish site](https://www.zo.computer/docs/tools/publish-site.md): Publish or republish a Zo Site so it gets a dedicated URL and runs a production build.
+- [Unpublish site](https://www.zo.computer/docs/tools/unpublish-site.md): Unpublish a Zo Site, removing its dedicated URL.
+- [Create service](https://www.zo.computer/docs/tools/register-user-service.md): Register a managed User Service on your Zo server.
+- [List services](https://www.zo.computer/docs/tools/list-user-services.md): List managed User Services running on your Zo server.
+- [Diagnose service](https://www.zo.computer/docs/tools/service-doctor.md): Diagnose issues and get details about the status of a user_service.
+- [Update service](https://www.zo.computer/docs/tools/update-user-service.md): Update a managed user service on your Zo server. Only specify the fields you want to change; omitted fields keep their existing values. Always restarts the service process.
+- [Delete service](https://www.zo.computer/docs/tools/delete-user-service.md): Delete a managed user service on your Zo server.
+- [Proxy local service](https://www.zo.computer/docs/tools/proxy-local-service.md): Proxy a local service to a public endpoint using a TCP tunnel, similar to ngrok.
+- [Use device](https://www.zo.computer/docs/tools/use-device.md): Run a command on the user's desktop device via the Zo desktop app.
+
+## Integrations
+- [Send Discord message](https://www.zo.computer/docs/tools/send-discord-message.md): Send a message to the user via Discord.
+- [Send Slack message](https://www.zo.computer/docs/tools/send-slack-message.md): Send a message to the user via Slack.
+- [Get Slack info](https://www.zo.computer/docs/tools/get-slack-info.md): Look up Slack workspaces, channels, and members.
+- [Get Slack history](https://www.zo.computer/docs/tools/get-slack-history.md): Get message history from a Slack channel or thread.
+- [Get Discord history](https://www.zo.computer/docs/tools/get-discord-history.md): Get message history from a Discord channel, thread, or DM.
+- [Get Discord info](https://www.zo.computer/docs/tools/get-discord-info.md): Look up Discord servers, channels, threads, or members.
+- [Send email](https://www.zo.computer/docs/tools/send-email-to-user.md): Send an email to the user's email address.
+- [Send SMS](https://www.zo.computer/docs/tools/send-sms-to-user.md): Send an SMS text message to the USER or a contact.
+- [Send Telegram message](https://www.zo.computer/docs/tools/send-telegram-message.md): Send a message to the user via Telegram.
+- [Connect Telegram](https://www.zo.computer/docs/tools/connect-telegram.md): Generate a pairing code to connect the user's Telegram account to Zo.
+- [List app tools](https://www.zo.computer/docs/tools/list-app-tools.md): List all available tools and configured props for an app connected by the user.
+- [Connect integration](https://www.zo.computer/docs/tools/connect-integration.md): Surface an inline Connect button so the user can authorize an OAuth integration.
+- [Search app catalog](https://www.zo.computer/docs/tools/search-app-catalog.md): Search Pipedream's full catalog of 1000+ app integrations by keyword.
+- [Use integration](https://www.zo.computer/docs/tools/use-integration.md): Run an action on a connected long-tail Pipedream catalog app.
+- [Use Gmail](https://www.zo.computer/docs/tools/use-app-gmail.md): Work with the user's connected Gmail account.
+- [Use Google Calendar](https://www.zo.computer/docs/tools/use-app-google-calendar.md): Work with the user's connected Google Calendar account.
+- [Use Google Drive](https://www.zo.computer/docs/tools/use-app-google-drive.md): Work with the user's connected Google Drive account (includes Google Docs, Sheets, Slides, and Forms).
+- [Use Google Sheets](https://www.zo.computer/docs/tools/use-app-google-sheets.md): Work with the user's connected Google Sheets spreadsheets.
+- [Use Google Tasks](https://www.zo.computer/docs/tools/use-app-google-tasks.md): Work with the user's connected Google Tasks account.
+- [Use OneDrive](https://www.zo.computer/docs/tools/use-app-microsoft-onedrive.md): Work with the user's connected Microsoft OneDrive account via Pipedream.
+- [Use Outlook](https://www.zo.computer/docs/tools/use-app-microsoft-outlook.md): Work with the user's connected Microsoft Outlook account.
+- [Use Outlook Calendar](https://www.zo.computer/docs/tools/use-app-microsoft-outlook-calendar.md): Work with the user's connected Microsoft Outlook Calendar account.
+- [Use Notion](https://www.zo.computer/docs/tools/use-app-notion.md): Work with the user's connected Notion account.
+- [Use Linear](https://www.zo.computer/docs/tools/use-app-linear.md): Work with the user's connected Linear workspace.
+- [Use Airtable](https://www.zo.computer/docs/tools/use-app-airtable.md): Work with the user's connected Airtable bases.
+- [Use Dropbox](https://www.zo.computer/docs/tools/use-app-dropbox.md): Work with the user's connected Dropbox account via Pipedream.
+- [Use Spotify](https://www.zo.computer/docs/tools/use-app-spotify.md): Use a tool to work with the user's connected Spotify account.
+- [Use X](https://www.zo.computer/docs/tools/use-app-x.md): Work with the user's connected X (Twitter) account.
+
+## Commerce
+- [Create product](https://www.zo.computer/docs/tools/create-stripe-product.md): Create a Stripe product on the user's connected account.
+- [Create price](https://www.zo.computer/docs/tools/create-stripe-price.md): Create a new price for an existing Stripe product.
+- [Create payment link](https://www.zo.computer/docs/tools/create-stripe-payment-link.md): Create a payment link for an existing Stripe price.
+- [List payment links](https://www.zo.computer/docs/tools/list-stripe-payment-links.md): List all payment links for the user.
+- [Update payment link](https://www.zo.computer/docs/tools/update-stripe-payment-link.md): Update an existing payment link (activate/deactivate).
+- [Update product](https://www.zo.computer/docs/tools/update-stripe-product.md): Update an existing Stripe product's name or description.
+- [List orders](https://www.zo.computer/docs/tools/list-stripe-orders.md): List all orders (checkout sessions) for the user.
+- [Update orders](https://www.zo.computer/docs/tools/update-stripe-orders.md): Update the fulfillment status of one or more orders.
+
+## Automations
+- [Create automation](https://www.zo.computer/docs/tools/create-automation.md): Create an automation to run an AI task on a schedule.
+- [List automations](https://www.zo.computer/docs/tools/list-automations.md): List all registered automations.
+- [Get automation](https://www.zo.computer/docs/tools/get-automation.md): Get full details of a single automation, including the complete instruction text.
+- [Edit automation](https://www.zo.computer/docs/tools/edit-automation.md): Edit an existing automation's title, instruction, schedule, preferred communication channel, or model.
+- [Delete automation](https://www.zo.computer/docs/tools/delete-automation.md): Delete an existing automation.
+
+## Personalization
+- [Create persona](https://www.zo.computer/docs/tools/create-persona.md): Create a new persona for Zo.
+- [List personas](https://www.zo.computer/docs/tools/list-personas.md): List all personas for the user.
+- [Edit persona](https://www.zo.computer/docs/tools/edit-persona.md): Edit fields of an existing persona. Heavily biased toward additive, surgical changes — there is no full-replacement option.
+- [Delete persona](https://www.zo.computer/docs/tools/delete-persona.md): Delete a persona by ID for the current user.
+- [Set active persona](https://www.zo.computer/docs/tools/set-active-persona.md): Set the active persona for the current channel (chat, SMS, email, etc.).
+- [List available scopes](https://www.zo.computer/docs/tools/list-available-scopes.md): List all available tool permission scopes, presets, and requirement rules.
+- [Set persona scopes](https://www.zo.computer/docs/tools/set-persona-scopes.md): Set which tools a persona is allowed to use.
+- [Create rule](https://www.zo.computer/docs/tools/create-rule.md): Create a new user rule for Zo.
+- [List rules](https://www.zo.computer/docs/tools/list-rules.md): List all rules for the user.
+- [Edit rule](https://www.zo.computer/docs/tools/edit-rule.md): Edit an existing rule.
+- [Delete rule](https://www.zo.computer/docs/tools/delete-rule.md): Delete a rule by ID.
+- [Update user settings](https://www.zo.computer/docs/tools/update-user-settings.md): Update a user setting (name or bio) in Zo.
+
+## Zo Space
+- [Read from space](https://www.zo.computer/docs/tools/get-space-route.md): Get a space route by path, including its source code.
+- [Write space route](https://www.zo.computer/docs/tools/write-space-route.md): Create a new route or fully rewrite an existing one in the user's zo.space site.
+- [Edit space route](https://www.zo.computer/docs/tools/edit-space-route.md): Edit an existing route's code by supplying only the changed sections.
+- [Delete from space](https://www.zo.computer/docs/tools/delete-space-route.md): Delete a route from the user's zo.space site.
+- [View space](https://www.zo.computer/docs/tools/list-space-routes.md): List all routes in the user's zo.space site.
+- [Undo space change](https://www.zo.computer/docs/tools/undo-space-route.md): Undo the last change to a space route, restoring the previous version.
+- [Redo space change](https://www.zo.computer/docs/tools/redo-space-route.md): Redo a previously undone space route change, restoring the next version.
+- [View route history](https://www.zo.computer/docs/tools/get-space-route-history.md): View the full version history of a space route.
+- [Upload asset to space](https://www.zo.computer/docs/tools/update-space-asset.md): Copy a file from the workspace to the user's zo.space assets.
+- [Remove asset from space](https://www.zo.computer/docs/tools/delete-space-asset.md): Delete a static asset from the user's zo.space site.
+- [List space assets](https://www.zo.computer/docs/tools/list-space-assets.md): List all uploaded assets in the user's zo.space site.
+- [Check space](https://www.zo.computer/docs/tools/get-space-errors.md): Get recent errors from the user's zo.space routes.
+- [Restart space](https://www.zo.computer/docs/tools/restart-space-server.md): Clean reinstall dependencies, rebuild, and restart the zo.space server.
+- [Get space settings](https://www.zo.computer/docs/tools/get-space-settings.md): Get space settings for the user's zo.space site.
+- [Update space settings](https://www.zo.computer/docs/tools/update-space-settings.md): Update space settings — space-globally or for a single page route.
+
+## API reference
+- [API reference](https://www.zo.computer/docs/api-reference.md): Authentication, the base URL, and Zo's public API surface.
+- [Ask Zo](https://www.zo.computer/docs/api-reference/ask.md): Send a message to your Zo and stream the response.
+- [Models](https://www.zo.computer/docs/api-reference/models.md): List available models and the full model catalog.
+- [Personas](https://www.zo.computer/docs/api-reference/personas.md): List the personas available in your workspace.
+
+## Info
+- [Security](https://www.zo.computer/docs/information/security.md): Keeping you and your data safe is important to us.
+- [Terms of service](https://www.zo.computer/docs/information/terms.md): Terms of Service last updated: August 8th, 2025
+- [Privacy policy](https://www.zo.computer/docs/information/privacy-policy.md): Privacy Policy last updated: May 20th, 2026
+- [Contact](https://www.zo.computer/docs/information/contact.md): How to get in touch

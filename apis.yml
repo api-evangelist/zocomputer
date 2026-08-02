@@ -1,4 +1,16 @@
 aid: zocomputer
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/zocomputer.png
 name: Zocomputer
 description: Zocomputer is a company surfaced as a portfolio company of lightspeed-venture-partners and
   added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment
@@ -15,9 +27,30 @@ created: '2026-07-17'
 modified: '2026-07-17'
 tags:
 - Company
-apis: []
+apis:
+- aid: zocomputer:zocomputer-ai-api
+  name: Zocomputer AI API
+  description: The AI API from Zocomputer — 3 operation(s) for ai.
+  tags:
+  - AI
+  properties:
+  - type: OpenAPI
+    url: openapi/zocomputer-ai-api-openapi.yml
+- aid: zocomputer:zocomputer-personas-api
+  name: Zocomputer Personas API
+  description: The Personas API from Zocomputer — 1 operation(s) for personas.
+  tags:
+  - Personas
+  properties:
+  - type: OpenAPI
+    url: openapi/zocomputer-personas-api-openapi.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+common:
+- type: VulnerabilityDisclosure
+  url: security/zocomputer-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/zocomputer-domain-security.yml
