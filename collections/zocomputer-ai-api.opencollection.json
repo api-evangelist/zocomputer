@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zo AI API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "AI",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Ask Zo",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.zo.computer/zo/ask",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a message to your Zo and get a response. Use `stream: true` for Server-Sent Events streaming."
+        },
+        {
+          "info": {
+            "name": "List available models",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.zo.computer/models/available"
+          },
+          "docs": "List all available models. When authenticated with an API key, includes BYOK configurations."
+        },
+        {
+          "info": {
+            "name": "Get the full model catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.zo.computer/models/catalog"
+          },
+          "docs": "Return the full public model catalog — the picker model list plus the scalar globals (default chat model, featured flags/labels, promo end date, deprecation map). This is the runtime, fleet-fresh equivalent of the baked types/generated/models.ts manifest, built from the same source so the two never drift. Public (no auth); host-specific disabled models are filtered separately at request time. Cached for 5 minutes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

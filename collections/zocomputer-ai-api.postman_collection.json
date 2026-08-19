@@ -1,0 +1,354 @@
+{
+  "item": [
+    {
+      "id": "142a2c7f-507e-4c22-8682-1e0bec5685e5",
+      "name": "AI",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c56cdeef-68df-4474-a559-adffa5354d11",
+          "name": "Ask Zo",
+          "request": {
+            "name": "Ask Zo",
+            "description": {
+              "content": "Send a message to your Zo and get a response. Use `stream: true` for Server-Sent Events streaming.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "zo",
+                "ask"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"input\": \"<string>\",\n  \"conversation_id\": \"<string>\",\n  \"model_name\": \"<string>\",\n  \"persona_id\": \"<string>\",\n  \"output_format\": {\n    \"type\": \"<string>\",\n    \"required\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"properties\": {\n      \"key_0\": {\n        \"type\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"key_1\": {\n        \"type\": \"<string>\",\n        \"description\": \"<string>\"\n      }\n    },\n    \"description\": \"<string>\"\n  },\n  \"memory_mode\": \"enabled\",\n  \"stream\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7b3e6e3c-af89-40ac-b460-8b3b0e97b6d5",
+              "name": "Success (non-streaming)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "zo",
+                    "ask"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": \"<string>\",\n  \"conversation_id\": \"<string>\",\n  \"model_name\": \"<string>\",\n  \"persona_id\": \"<string>\",\n  \"output_format\": {\n    \"type\": \"string\",\n    \"required\": [\n      \"string\",\n      \"string\"\n    ],\n    \"properties\": {\n      \"key_0\": {\n        \"type\": \"boolean\",\n        \"description\": \"string\"\n      }\n    },\n    \"description\": \"string\"\n  },\n  \"memory_mode\": \"enabled\",\n  \"stream\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"output\": \"string\",\n  \"conversation_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2ac624cf-bd3d-45d4-a1c0-1b02b1109de6",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "zo",
+                    "ask"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": \"<string>\",\n  \"conversation_id\": \"<string>\",\n  \"model_name\": \"<string>\",\n  \"persona_id\": \"<string>\",\n  \"output_format\": {\n    \"type\": \"string\",\n    \"required\": [\n      \"string\",\n      \"string\"\n    ],\n    \"properties\": {\n      \"key_0\": {\n        \"type\": \"boolean\",\n        \"description\": \"string\"\n      }\n    },\n    \"description\": \"string\"\n  },\n  \"memory_mode\": \"enabled\",\n  \"stream\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b5d7b89e-9662-43e3-b53b-9659b5743f30",
+          "name": "List available models",
+          "request": {
+            "name": "List available models",
+            "description": {
+              "content": "List all available models. When authenticated with an API key, includes BYOK configurations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "models",
+                "available"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2b8cbcaf-5b66-4793-ab15-f192fd152d16",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "models",
+                    "available"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"models\": [\n    {\n      \"model_name\": \"string\",\n      \"label\": \"string\",\n      \"vendor\": \"string\",\n      \"type\": \"subscribers\",\n      \"priority\": 2331.4279009846505,\n      \"context_window\": 2766,\n      \"is_byok\": false\n    },\n    {\n      \"model_name\": \"string\",\n      \"label\": \"string\",\n      \"vendor\": \"string\",\n      \"type\": \"free\",\n      \"priority\": 8766.04123656641,\n      \"context_window\": 2372,\n      \"is_byok\": false\n    }\n  ],\n  \"featured_models_are_free\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3cb9a63e-bbb8-4935-9dfd-8b244cef6ad3",
+          "name": "Get the full model catalog",
+          "request": {
+            "name": "Get the full model catalog",
+            "description": {
+              "content": "Return the full public model catalog — the picker model list plus the scalar globals (default chat model, featured flags/labels, promo end date, deprecation map). This is the runtime, fleet-fresh equivalent of the baked types/generated/models.ts manifest, built from the same source so the two never drift. Public (no auth); host-specific disabled models are filtered separately at request time. Cached for 5 minutes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "models",
+                "catalog"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dd59a8fc-881d-4915-b80c-47249abc5377",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "models",
+                    "catalog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"models\": [\n    {\n      \"value\": \"string\",\n      \"label\": \"string\",\n      \"slug\": \"string\",\n      \"vendor\": \"string\",\n      \"vendor_slug\": \"string\",\n      \"type\": \"string\",\n      \"meter\": \"string\",\n      \"description\": \"string\",\n      \"quality_tier\": 3,\n      \"is_fast\": false,\n      \"url\": \"string\",\n      \"release_date\": \"string\",\n      \"country\": \"string\",\n      \"priority\": 6120.839883844448,\n      \"knowledge_cutoff_date\": \"string\",\n      \"context_window\": 6717,\n      \"supports_images\": true,\n      \"features\": [\n        \"string\",\n        \"string\"\n      ],\n      \"reasoning\": {\n        \"kind\": \"string\",\n        \"levels\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      },\n      \"input_tok_price\": \"string\",\n      \"output_tok_price\": \"string\",\n      \"cached_read_tok_price\": \"string\",\n      \"cached_write_tok_price\": \"string\",\n      \"input_audio_minutes_price\": \"string\",\n      \"output_megapixel_price\": \"string\",\n      \"output_video_seconds_price\": \"string\",\n      \"tier_threshold_input_tokens\": 9959,\n      \"tier_higher_input_tok_price\": \"string\",\n      \"tier_higher_output_tok_price\": \"string\",\n      \"hide_from_ui\": false\n    },\n    {\n      \"value\": \"string\",\n      \"label\": \"string\",\n      \"slug\": \"string\",\n      \"vendor\": \"string\",\n      \"vendor_slug\": \"string\",\n      \"type\": \"string\",\n      \"meter\": \"string\",\n      \"description\": \"string\",\n      \"quality_tier\": 3,\n      \"is_fast\": false,\n      \"url\": \"string\",\n      \"release_date\": \"string\",\n      \"country\": \"string\",\n      \"priority\": 3858.987983818536,\n      \"knowledge_cutoff_date\": \"string\",\n      \"context_window\": 2891,\n      \"supports_images\": true,\n      \"features\": [\n        \"string\",\n        \"string\"\n      ],\n      \"reasoning\": {\n        \"kind\": \"string\",\n        \"levels\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      },\n      \"input_tok_price\": \"string\",\n      \"output_tok_price\": \"string\",\n      \"cached_read_tok_price\": \"string\",\n      \"cached_write_tok_price\": \"string\",\n      \"input_audio_minutes_price\": \"string\",\n      \"output_megapixel_price\": \"string\",\n      \"output_video_seconds_price\": \"string\",\n      \"tier_threshold_input_tokens\": 2959,\n      \"tier_higher_input_tok_price\": \"string\",\n      \"tier_higher_output_tok_price\": \"string\",\n      \"hide_from_ui\": false\n    }\n  ],\n  \"default_chat_model_id\": \"string\",\n  \"featured_model_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"featured_models_are_free\": true,\n  \"featured_model_labels\": [\n    \"string\",\n    \"string\"\n  ],\n  \"deprecation_map\": {\n    \"key_0\": \"string\"\n  },\n  \"promo_end_date\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.zo.computer",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8dd1915e-5db7-402f-8b8f-c94d68643dc4",
+    "name": "Zo AI API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}
