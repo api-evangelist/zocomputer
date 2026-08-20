@@ -32,6 +32,8 @@ apis:
   name: Zocomputer AI API
   description: The AI API from Zocomputer — 3 operation(s) for ai.
   tags:
+  - Artificial Intelligence
+  tags_raw:
   - AI
   properties:
   - type: OpenAPI
