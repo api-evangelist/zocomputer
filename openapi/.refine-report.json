@@ -1,8 +1,7 @@
 {
   "provider": "zocomputer",
   "sources": [
-    "zocomputer-ai-api-openapi.yml",
-    "zocomputer-personas-api-openapi.yml"
+    "_original/zocomputer-openapi.json"
   ],
   "outputs": [
     "zocomputer-ai-api-openapi.yml",
@@ -11,6 +10,15 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "zocomputer-openapi.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "zocomputer-openapi.json: declared missing tag: AI",
+    "zocomputer-openapi.json: declared missing tag: Personas",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "zocomputer-ai-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "zocomputer-personas-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

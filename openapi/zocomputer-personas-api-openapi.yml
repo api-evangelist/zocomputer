@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Zo AI Personas API
+  title: Zo Personas API
   version: 1.0.0
 servers:
 - url: https://api.zo.computer
@@ -26,18 +26,6 @@ paths:
                 $ref: '#/components/schemas/ZoPersonasResponse'
 components:
   schemas:
-    ZoPersonasResponse:
-      properties:
-        personas:
-          items:
-            $ref: '#/components/schemas/ZoPersonaInfo'
-          type: array
-          title: Personas
-          description: List of configured personas
-      type: object
-      required:
-      - personas
-      title: ZoPersonasResponse
     ZoPersonaInfo:
       properties:
         id:
@@ -70,6 +58,18 @@ components:
       - name
       - prompt
       title: ZoPersonaInfo
+    ZoPersonasResponse:
+      properties:
+        personas:
+          items:
+            $ref: '#/components/schemas/ZoPersonaInfo'
+          type: array
+          title: Personas
+          description: List of configured personas
+      type: object
+      required:
+      - personas
+      title: ZoPersonasResponse
   securitySchemes:
     bearerAuth:
       type: http
