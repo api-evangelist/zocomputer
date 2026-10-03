@@ -71,57 +71,7 @@ paths:
                 $ref: '#/components/schemas/ModelCatalogResponse'
 components:
   schemas:
-    CatalogReasoningRange:
-      properties:
-        kind:
-          type: string
-          const: range
-          title: Kind
-          description: 'Discriminator: reasoning is a continuous token budget'
-        min_tokens:
-          type: integer
-          title: Min Tokens
-          description: Minimum thinking-token budget
-        max_tokens:
-          type: integer
-          title: Max Tokens
-          description: Maximum thinking-token budget
-      type: object
-      required:
-      - kind
-      - min_tokens
-      - max_tokens
-      title: CatalogReasoningRange
-      description: Reasoning configured as a continuous thinking-token budget.
-    ZoModelsResponse:
-      properties:
-        models:
-          items:
-            $ref: '#/components/schemas/ZoModelInfo'
-          type: array
-          title: Models
-          description: List of available AI models
-        featured_models_are_free:
-          type: boolean
-          title: Featured Models Are Free
-          description: When true, frontend shows Free badge on featured models
-      type: object
-      required:
-      - models
-      - featured_models_are_free
-      title: ZoModelsResponse
-      description: Response from /models/available endpoint.
-    ZoAskResponseError:
-      properties:
-        error:
-          type: string
-          title: Error
-          description: Error message
-      type: object
-      required:
-      - error
-      title: ZoAskResponseError
-    PropertyObject:
+    StructuredOutputFormat:
       properties:
         type:
           type: string
@@ -151,41 +101,83 @@ components:
       - type
       - required
       - properties
-      title: PropertyObject
-    PropertyScalar:
+      title: StructuredOutputFormat
+      description: "Example with the various kind of properties that can be stated:\n{\n    \"type\": \"object\",\n    \"description\": \"descriptions are optional but helpful, each property can have them\",\n    \"properties\": {\n        \"names\": {\n            \"type\": \"array\",\n            \"items\": {\n                \"type\": \"string\"\n            }\n        },\n        \"first_name\": {\n            \"type\": \"string\"\n        },\n        \"temperature_degrees\": {\n            \"type\": \"number\"\n        },\n        \"temperature_unit\": {\n            \"type\": \"string\",\n            \"description\": \"The unit to return the temperature in\",\n            \"enum\": [\"F\", \"C\"]\n        },\n        \"nested_object\": {\n            \"type\": \"object\",\n            \"description\": \"A nested object\",\n            \"properties\": {\n                \"nested_object_property\": {\n                    \"type\": \"string\"\n                }\n            },\n            \"required\": [\"nested_object_property\"]\n        }\n    },\n    \"required\": [\"names\", \"first_name\"]\n}"
+    ModelCatalogResponse:
       properties:
-        type:
+        models:
+          items:
+            $ref: '#/components/schemas/PublicModelChoice'
+          type: array
+          title: Models
+          description: The picker model list, sorted by priority
+        default_chat_model_id:
           type: string
-          enum:
-          - string
-          - number
-          - boolean
-          title: Type
-        description:
+          title: Default Chat Model Id
+          description: Public id of the default chat model
+        featured_model_ids:
+          items:
+            type: string
+          type: array
+          title: Featured Model Ids
+          description: Public ids of featured ('Free' badge) models
+        featured_models_are_free:
+          type: boolean
+          title: Featured Models Are Free
+          description: When true, the frontend shows a Free badge on featured models
+        featured_model_labels:
+          items:
+            type: string
+          type: array
+          title: Featured Model Labels
+          description: Labels for featured_model_ids, in order
+        promo_end_date:
           anyOf:
           - type: string
           - type: 'null'
-          title: Description
+          title: Promo End Date
+          description: Promo end date (YYYY-MM-DD) or null
+        deprecation_map:
+          additionalProperties:
+            type: string
+          type: object
+          title: Deprecation Map
+          description: Map of deprecated public model id → active successor public id
       type: object
       required:
-      - type
-      title: PropertyScalar
-    CatalogReasoningLevel:
+      - models
+      - default_chat_model_id
+      - featured_model_ids
+      - featured_models_are_free
+      - featured_model_labels
+      - deprecation_map
+      title: ModelCatalogResponse
+      description: 'Full public model catalog served by ``GET /models/catalog``.
+
+
+        Mirrors the baked ``types/generated/models.ts`` manifest (the picker list
+
+        plus the scalar globals) so the web app can fetch live catalog data at
+
+        runtime and fall back to the baked copy when the fetch is pending or fails.'
+    ZoModelsResponse:
       properties:
-        value:
-          type: integer
-          title: Value
-          description: Slider position (0-based) for this reasoning level
-        label:
-          type: string
-          title: Label
-          description: Human-readable label, e.g. 'High reasoning'
+        models:
+          items:
+            $ref: '#/components/schemas/ZoModelInfo'
+          type: array
+          title: Models
+          description: List of available AI models
+        featured_models_are_free:
+          type: boolean
+          title: Featured Models Are Free
+          description: When true, frontend shows Free badge on featured models
       type: object
       required:
-      - value
-      - label
-      title: CatalogReasoningLevel
-      description: One selectable reasoning level in a model's reasoning slider.
+      - models
+      - featured_models_are_free
+      title: ZoModelsResponse
+      description: Response from /models/available endpoint.
     HTTPValidationError:
       properties:
         detail:
@@ -195,73 +187,125 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
-    ZoAskRequest:
+    PropertyEnum:
       properties:
-        input:
+        type:
           type: string
-          title: Input
-          description: Your message to Zo
+          const: string
+          title: Type
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        enum:
+          items:
+            type: string
+          type: array
+          title: Enum
+      type: object
+      required:
+      - type
+      - enum
+      title: PropertyEnum
+    ZoAskResponseSuccess:
+      properties:
+        output:
+          anyOf:
+          - type: string
+          - additionalProperties: true
+            type: object
+          title: Output
+          description: Zo's response (object if output_format was specified)
         conversation_id:
           anyOf:
           - type: string
           - type: 'null'
           title: Conversation Id
-          description: Continue an existing conversation
-        model_name:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Model Name
-          description: Override the default model (for example, 'zo:openai/gpt-5.4'; use /models/available to list available)
-        persona_id:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Persona Id
-          description: Override the active persona (use /personas/available to list available)
-        output_format:
-          anyOf:
-          - $ref: '#/components/schemas/StructuredOutputFormat'
-          - type: 'null'
-          description: JSON Schema for structured output
-        memory_mode:
+          description: ID to continue this conversation
+      type: object
+      required:
+      - output
+      title: ZoAskResponseSuccess
+    ZoAskResponseError:
+      properties:
+        error:
           type: string
-          enum:
-          - enabled
-          - 'off'
-          title: Memory Mode
-          description: 'Memory mode for this request: ''enabled'' includes workspace memory, ''off'' disables it.'
-          default: enabled
-        stream:
+          title: Error
+          description: Error message
+      type: object
+      required:
+      - error
+      title: ZoAskResponseError
+    ZoModelInfo:
+      properties:
+        model_name:
+          type: string
+          title: Model Name
+          description: Unique public model identifier (e.g., 'zo:openai/gpt-5.4')
+        label:
+          type: string
+          title: Label
+          description: Human-readable model name
+        vendor:
+          type: string
+          title: Vendor
+          description: Model provider (e.g., 'Anthropic', 'OpenAI')
+        type:
+          anyOf:
+          - type: string
+            enum:
+            - free
+            - subscribers
+          - type: 'null'
+          title: Type
+          description: 'Access tier: ''free'' (available to all) or ''subscribers'' (premium built-in metered models)'
+        priority:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Priority
+          description: Sort priority for UI pickers; lower values appear first
+        context_window:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Context Window
+          description: Maximum context length in tokens
+        is_byok:
           type: boolean
-          title: Stream
-          description: Enable streaming mode (returns Server-Sent Events)
+          title: Is Byok
+          description: True if this is a user-configured BYOK model
           default: false
       type: object
       required:
-      - input
-      title: ZoAskRequest
-    ValidationError:
+      - model_name
+      - label
+      - vendor
+      title: ZoModelInfo
+    PropertyArray:
       properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
         type:
           type: string
-          title: Error Type
+          const: array
+          title: Type
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        items:
+          anyOf:
+          - $ref: '#/components/schemas/PropertyScalar'
+          - $ref: '#/components/schemas/PropertyObject'
+          - $ref: '#/components/schemas/PropertyEnum'
+          - $ref: '#/components/schemas/PropertyArray'
+          title: Items
       type: object
       required:
-      - loc
-      - msg
       - type
-      title: ValidationError
+      - items
+      title: PropertyArray
     PublicModelChoice:
       properties:
         value:
@@ -458,76 +502,149 @@ components:
         baked ``AVAILABLE_MODELS`` manifest in ``types/generated/models.ts`` so the
 
         web app can swap the static import for this runtime payload directly.'
-    ZoModelInfo:
+    CatalogReasoningLevels:
       properties:
-        model_name:
+        kind:
           type: string
-          title: Model Name
-          description: Unique public model identifier (e.g., 'zo:openai/gpt-5.4')
+          const: levels
+          title: Kind
+          description: 'Discriminator: reasoning selected from discrete levels'
+        levels:
+          items:
+            $ref: '#/components/schemas/CatalogReasoningLevel'
+          type: array
+          title: Levels
+          description: Available reasoning levels, lowest first
+      type: object
+      required:
+      - kind
+      - levels
+      title: CatalogReasoningLevels
+      description: Reasoning configured as discrete levels (e.g. low/medium/high).
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    CatalogReasoningLevel:
+      properties:
+        value:
+          type: integer
+          title: Value
+          description: Slider position (0-based) for this reasoning level
         label:
           type: string
           title: Label
-          description: Human-readable model name
-        vendor:
-          type: string
-          title: Vendor
-          description: Model provider (e.g., 'Anthropic', 'OpenAI')
-        type:
-          anyOf:
-          - type: string
-            enum:
-            - free
-            - subscribers
-          - type: 'null'
-          title: Type
-          description: 'Access tier: ''free'' (available to all) or ''subscribers'' (premium built-in metered models)'
-        priority:
-          anyOf:
-          - type: number
-          - type: 'null'
-          title: Priority
-          description: Sort priority for UI pickers; lower values appear first
-        context_window:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Context Window
-          description: Maximum context length in tokens
-        is_byok:
-          type: boolean
-          title: Is Byok
-          description: True if this is a user-configured BYOK model
-          default: false
+          description: Human-readable label, e.g. 'High reasoning'
       type: object
       required:
-      - model_name
+      - value
       - label
-      - vendor
-      title: ZoModelInfo
-    PropertyArray:
+      title: CatalogReasoningLevel
+      description: One selectable reasoning level in a model's reasoning slider.
+    CatalogReasoningRange:
+      properties:
+        kind:
+          type: string
+          const: range
+          title: Kind
+          description: 'Discriminator: reasoning is a continuous token budget'
+        min_tokens:
+          type: integer
+          title: Min Tokens
+          description: Minimum thinking-token budget
+        max_tokens:
+          type: integer
+          title: Max Tokens
+          description: Maximum thinking-token budget
+      type: object
+      required:
+      - kind
+      - min_tokens
+      - max_tokens
+      title: CatalogReasoningRange
+      description: Reasoning configured as a continuous thinking-token budget.
+    PropertyScalar:
       properties:
         type:
           type: string
-          const: array
+          enum:
+          - string
+          - number
+          - boolean
           title: Type
         description:
           anyOf:
           - type: string
           - type: 'null'
           title: Description
-        items:
-          anyOf:
-          - $ref: '#/components/schemas/PropertyScalar'
-          - $ref: '#/components/schemas/PropertyObject'
-          - $ref: '#/components/schemas/PropertyEnum'
-          - $ref: '#/components/schemas/PropertyArray'
-          title: Items
       type: object
       required:
       - type
-      - items
-      title: PropertyArray
-    StructuredOutputFormat:
+      title: PropertyScalar
+    ZoAskRequest:
+      properties:
+        input:
+          type: string
+          title: Input
+          description: Your message to Zo
+        conversation_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Conversation Id
+          description: Continue an existing conversation
+        model_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Model Name
+          description: Override the default model (for example, 'zo:openai/gpt-5.4'; use /models/available to list available)
+        persona_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Persona Id
+          description: Override the active persona (use /personas/available to list available)
+        output_format:
+          anyOf:
+          - $ref: '#/components/schemas/StructuredOutputFormat'
+          - type: 'null'
+          description: JSON Schema for structured output
+        memory_mode:
+          type: string
+          enum:
+          - enabled
+          - 'off'
+          title: Memory Mode
+          description: 'Memory mode for this request: ''enabled'' includes workspace memory, ''off'' disables it.'
+          default: enabled
+        stream:
+          type: boolean
+          title: Stream
+          description: Enable streaming mode (returns Server-Sent Events)
+          default: false
+      type: object
+      required:
+      - input
+      title: ZoAskRequest
+    PropertyObject:
       properties:
         type:
           type: string
@@ -557,124 +674,7 @@ components:
       - type
       - required
       - properties
-      title: StructuredOutputFormat
-      description: "Example with the various kind of properties that can be stated:\n{\n    \"type\": \"object\",\n    \"description\": \"descriptions are optional but helpful, each property can have them\",\n    \"properties\": {\n        \"names\": {\n            \"type\": \"array\",\n            \"items\": {\n                \"type\": \"string\"\n            }\n        },\n        \"first_name\": {\n            \"type\": \"string\"\n        },\n        \"temperature_degrees\": {\n            \"type\": \"number\"\n        },\n        \"temperature_unit\": {\n            \"type\": \"string\",\n            \"description\": \"The unit to return the temperature in\",\n            \"enum\": [\"F\", \"C\"]\n        },\n        \"nested_object\": {\n            \"type\": \"object\",\n            \"description\": \"A nested object\",\n            \"properties\": {\n                \"nested_object_property\": {\n                    \"type\": \"string\"\n                }\n            },\n            \"required\": [\"nested_object_property\"]\n        }\n    },\n    \"required\": [\"names\", \"first_name\"]\n}"
-    CatalogReasoningLevels:
-      properties:
-        kind:
-          type: string
-          const: levels
-          title: Kind
-          description: 'Discriminator: reasoning selected from discrete levels'
-        levels:
-          items:
-            $ref: '#/components/schemas/CatalogReasoningLevel'
-          type: array
-          title: Levels
-          description: Available reasoning levels, lowest first
-      type: object
-      required:
-      - kind
-      - levels
-      title: CatalogReasoningLevels
-      description: Reasoning configured as discrete levels (e.g. low/medium/high).
-    ZoAskResponseSuccess:
-      properties:
-        output:
-          anyOf:
-          - type: string
-          - additionalProperties: true
-            type: object
-          title: Output
-          description: Zo's response (object if output_format was specified)
-        conversation_id:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Conversation Id
-          description: ID to continue this conversation
-      type: object
-      required:
-      - output
-      title: ZoAskResponseSuccess
-    ModelCatalogResponse:
-      properties:
-        models:
-          items:
-            $ref: '#/components/schemas/PublicModelChoice'
-          type: array
-          title: Models
-          description: The picker model list, sorted by priority
-        default_chat_model_id:
-          type: string
-          title: Default Chat Model Id
-          description: Public id of the default chat model
-        featured_model_ids:
-          items:
-            type: string
-          type: array
-          title: Featured Model Ids
-          description: Public ids of featured ('Free' badge) models
-        featured_models_are_free:
-          type: boolean
-          title: Featured Models Are Free
-          description: When true, the frontend shows a Free badge on featured models
-        featured_model_labels:
-          items:
-            type: string
-          type: array
-          title: Featured Model Labels
-          description: Labels for featured_model_ids, in order
-        promo_end_date:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Promo End Date
-          description: Promo end date (YYYY-MM-DD) or null
-        deprecation_map:
-          additionalProperties:
-            type: string
-          type: object
-          title: Deprecation Map
-          description: Map of deprecated public model id → active successor public id
-      type: object
-      required:
-      - models
-      - default_chat_model_id
-      - featured_model_ids
-      - featured_models_are_free
-      - featured_model_labels
-      - deprecation_map
-      title: ModelCatalogResponse
-      description: 'Full public model catalog served by ``GET /models/catalog``.
-
-
-        Mirrors the baked ``types/generated/models.ts`` manifest (the picker list
-
-        plus the scalar globals) so the web app can fetch live catalog data at
-
-        runtime and fall back to the baked copy when the fetch is pending or fails.'
-    PropertyEnum:
-      properties:
-        type:
-          type: string
-          const: string
-          title: Type
-        description:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Description
-        enum:
-          items:
-            type: string
-          type: array
-          title: Enum
-      type: object
-      required:
-      - type
-      - enum
-      title: PropertyEnum
+      title: PropertyObject
   securitySchemes:
     bearerAuth:
       type: http
